@@ -2,28 +2,17 @@ import mongoose from "mongoose";
 
 const appointmentSchema = new mongoose.Schema(
   {
-    studentId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the User model (student)
-      required: true,
-    },
-    professorId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the User model (professor)
-      required: true,
-    },
-    time: {
-      type: Date,
-      required: true,
-    },
+    studentId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    professorId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    time: { type: Date, required: true },
     status: {
       type: String,
-      enum: ["booked", "completed", "cancelled"], // The appointment status
+      enum: ["booked", "completed", "cancelled"],
       default: "booked",
     },
   },
-  { timestamps: true } // Automatically adds createdAt and updatedAt fields
+  { timestamps: true }
 );
 
-const Appointment =  mongoose.model('Appointment', appointmentSchema);
-export {Appointment}
+const Appointment = mongoose.model("Appointment", appointmentSchema);
+export { Appointment };
